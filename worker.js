@@ -5208,14 +5208,14 @@ createApp({
     const isEditing = ref(false); // 添加编辑状态
     const editContent = ref(''); // 添加编辑内容
     const editMarkdown = ref(false); // 添加编辑时的 Markdown 开关状态
-    const editExpiresIn = ref('1d'); // 添加编辑时的过期时间状态
+    const editExpiresIn = ref('never'); // 添加编辑时的过期时间状态
     const editMaxViews = ref('0'); // 添加编辑时的访问次数状态
     const editNote = ref(''); // 添加编辑时的备注状态
     const note = ref(''); // 添加备注状态
     const maxViews = ref(0); // 添加最大访问次数状态
     const viewCount = ref(0); // 添加已访问次数状态
     const isFileEditing = ref(false);
-    const editFileExpiresIn = ref('1d');
+    const editFileExpiresIn = ref('never');
     const editFileNote = ref(''); // 添加编辑时的备注状态
     const editFileMaxViews = ref('0'); // 添加这行，初始化可下载次数
     // 下载等待状态变量
@@ -5251,7 +5251,7 @@ createApp({
         // 设置编辑状态
         editContent.value = content.value;
         editMarkdown.value = isMarkdown.value;
-        editExpiresIn.value = '1d';
+        editExpiresIn.value = 'never';
         // 添加数据检查，使用默认值 0
         editMaxViews.value = (data.maxViews || 0).toString();
         maxViews.value = data.maxViews || 0;
@@ -5903,7 +5903,7 @@ createApp({
         const data = await response.json();
         
         // 设置编辑状态
-        editFileExpiresIn.value = '1d'; // 默认值
+        editFileExpiresIn.value = 'never'; // 默认值
         editFileMaxViews.value = (data.maxViews || 0).toString(); // 设置当前的下载次数限制
         editFileNote.value = data.note || ''; // 设置当前的备注
         isFileEditing.value = true;
