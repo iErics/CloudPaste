@@ -4312,7 +4312,7 @@ createApp({
         const data = await response.json();
         
         // 设置编辑状态
-        editFileExpiresIn.value = '1d'; // 默认值
+        editFileExpiresIn.value = 'never'; // 默认值
         editFileMaxViews.value = (data.maxViews || 0).toString(); // 设置当前的下载次数限制
         isFileEditing.value = true;
       } catch (err) {
